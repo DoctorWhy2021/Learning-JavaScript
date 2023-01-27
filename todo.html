@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <title>My Todo App</title>
+    </head>
     <body>
         <script>
-            let todo1 = (4 + 5) * 3;
+            let todo1 = 'Get Groceries';
             let todo2 = 'Wash car';
-            let todo3 = 'Make dinnner';
-            let age = 22;
-            let message = 'I am ' + age + " years old"
-            alert(typeof(message));
+            let todo3 = 'Make dinner';
+            let element = document.createElement('div');
+            element.innerText = todo1;
+            document.body.appendChild(element);
+
+            let element1 = document.createElement('div');
+            element1.innerText = todo2;
+            document.body.appendChild(element1);
+
+            let element2 = document.createElement('div');
+            element2.innerText = todo3;
+            document.body.appendChild(element2);
         </script>
     </body>
 </html>
