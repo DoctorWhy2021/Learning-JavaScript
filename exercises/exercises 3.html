@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises 3</title>
+    </head>
+    <body>
+        <script>
+            let texts = [];
+            texts.push('Hello');
+            texts.push('World');
+            
+            function toUpper(strs){
+                let result = [];
+                texts.forEach(function (str){
+                    result.push(str.toUpperCase());
+                });
+                 console.log(result);
+            }
+
+            toUpper(texts);
+
+            function arrayDouble(array){
+                let result = [];
+                array.forEach(function (elem){
+                    result.push(elem);
+                    result.push(elem);
+                });
+                console.log(result);
+            }
+
+            arrayDouble(['Damn', 'russians']);
+
+            function arraySum(numbArray){
+                let total = 0;
+                numbArray.forEach(function (numb){
+                    total = total + numb;
+                });
+                console.log(total);
+            }
+
+            arraySum([1,2,3]);
+            arraySum([5, -2, 7, 0]);
+        </script>
+    </body>
+</html>
