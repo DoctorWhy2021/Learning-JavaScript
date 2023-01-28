@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises 5</title>
+    </head>
+    <body>
+        <button onclick="addToCart('Apple');">Apple</button>
+        <button onclick="addToCart('Tomato');">Tomato</button>
+        <button onclick="addToCart('Eggs');">Eggs</button>
+        <button onclick="clearCart();">Clear</button>
+        <div id="cart"></div>
+        <p>-------</p>
+        <input type="text" id="input-field">
+        <button onclick="convertToCM();">Convert to cm</button>
+        <button onclick="convertToInch();">Convert to inch</button>
+        <div id="result"></div>
+        <script>
+            const cart = document.getElementById('cart');
+
+            function addToCart(prodName){
+                const element = document.createElement('div');
+                element.innerHTML = prodName;
+                cart.appendChild(element);
+            }
+
+            function clearCart(){
+                cart.innerHTML = '';
+            }
+
+            const inputField = document.getElementById('input-field');
+            const result = document.getElementById('result');
+
+            function convertToCM(){
+                result.innerHTML  = '';
+                const element = document.createElement('div');
+                element.innerHTML = inputField.value * 2.54 + 'cm';
+                result.appendChild(element);
+            }
+           
+            function convertToInch(){
+                result.innerHTML  = '';
+                const element = document.createElement('div');
+                element.innerHTML = inputField.value * 0.3937 + 'in';
+                result.appendChild(element);
+            }
+        </script>
+    </body>
+</html>
