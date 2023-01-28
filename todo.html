@@ -4,21 +4,21 @@
         <title>My Todo App</title>
     </head>
     <body>
-        <script>
-            let todo1 = 'Get Groceries';
-            let todo2 = 'Wash car';
-            let todo3 = 'Make dinner';
-            let todo4 = 'Do laundry';
-
+        <input id="todo-title" type="text">
+        <button onclick="addTodo();">Add Todo</button>
+        <script> 
             let todos = ['Get Groceries', 'Wash car' , 'Make dinner'];
-            todos.push('Another todo');
-
             todos.forEach(function (todoTitle){
                 let element = document.createElement('div');
                 element.innerText = todoTitle;
                 document.body.appendChild(element);
             });
 
+            function addTodo(){
+                let textbox = document.getElementById('todo-title');
+                let title = textbox.value;
+                todos.push(title);
+            }
         </script>
     </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises 4</title>
+    </head>
+    <body>
+        <button id="todo-button" onclick="textOnButton();">Click me</button>
+        <p>-----</p>
+        <div id="counter">0</div>
+        <button onclick="countUp();">Up</button>
+        <button onclick="countDown();">Down</button>
+        <p>-----</p>
+        <input type="text" id="text-box">
+        <button onclick="createADiv();">Click me!</button>
+        <script>
+            function textOnButton(){
+                let button = document.getElementById('todo-button');
+                button.innerText = 'Done';
+            }
+
+            let countValue = 0;
+            let counter = document.getElementById('counter');
+            function countUp(){
+                countValue++;
+                counter.innerText = countValue;
+            }
+
+            function countDown(){
+                countValue--;
+                counter.innerText = countValue;
+            }
+
+            function createADiv(){
+                let text = document.getElementById('text-box');
+                let element = document.createElement('div');
+                element.innerText = text.value;
+                document.body.appendChild(element);
+            }
+        </script>
+    </body>
+</html>
