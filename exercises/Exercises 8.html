@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises 8</title>
+    </head>
+    <body>
+        <script>
+            function convToUpper(str){
+                return str.toUpperCase();
+            }
+
+            function aboveFreezing(temps){
+                const tempsAboveFreezing = temps.filter(function (item){
+                    return item > 0;
+                });
+
+                return tempsAboveFreezing;
+            }
+
+            let foodArray = [
+                {
+                    name: 'Apple',
+                    color: 'red'
+                },
+                {
+                    name: 'Egg',
+                    color: 'white'
+                }
+            ];
+
+            function removeRed (foodArr){
+                const food = foodArr.filter(function (item){
+                    return item.color !== 'red';
+                })
+
+                return food;
+            }
+
+            console.log(removeRed(foodArray));
+        </script>
+    </body>
+</html>
