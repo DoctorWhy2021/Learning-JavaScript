@@ -9,6 +9,8 @@
         <button onclick="addTodo();">Add Todo</button>
         <div id="todo-list"></div>
         <script> 
+
+        //Model
             let todos = [ {
                 title: 'Get Groceries',
                 dueDate: '2023-10-04',
@@ -23,29 +25,17 @@
                 id: 'id3'
             }];
 
-            render();
-
-            function addTodo(){
-                const textbox = document.getElementById('todo-title');
-                const title = textbox.value;
-
-                const datePicker = document.getElementById('date-picker');
-                const dueDate = datePicker.value;
-
+            //Creates a todo
+            function createTodo(title, dueDate){
                 const id = '' + new Date().getTime();
                 todos.push({
                     title: title,
                     dueDate: dueDate,
                     id: id
                 });
-                render();
             }
-
-
-            function  deleteTodo(event){
-                const deleteButton = event.target;
-                const idToDelete = deleteButton.id;
-
+            //Deletes a todo
+            function removeTodo(idToDelete){
                 todos = todos.filter(function (todo){
                     if(todo.id === idToDelete){
                         return false;
@@ -53,10 +43,49 @@
                         return true;
                     }
                 });
+            }
+
+            function toggleTodo(todoId, checked){
+                todos.forEach(function(todo){
+                    if(todo.id === todoId){
+                        todo.isDone = checked;
+                    }
+                });
+            }
+
+            render();
+            //Controller
+            function addTodo(){
+                const textbox = document.getElementById('todo-title');
+                const title = textbox.value;
+
+                const datePicker = document.getElementById('date-picker');
+                const dueDate = datePicker.value;
+
+                createTodo(title, dueDate);
+                
+                render();
+            }
+
+            function  deleteTodo(event){
+                const deleteButton = event.target;
+                const idToDelete = deleteButton.id;
+                removeTodo(idToDelete);
 
                 render();
             }
 
+            function checkTodo(event){
+                const checkbox = event.target;
+
+                const todoId = checkbox.dataset.todoId;
+                const checked = checkbox.checked;
+                
+                toggleTodo(todoId, checked);
+                render();
+            }
+
+            //View
             function render(){
                 //reset our list
                 document.getElementById('todo-list').innerHTML =  '';
@@ -70,6 +99,17 @@
                 deleteBtn.onclick = deleteTodo;
                 deleteBtn.id = todo.id;
                 element.appendChild(deleteBtn);
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.onchange = checkTodo;
+                checkbox.dataset.todoId = todo.id;
+                if(todo.isDone === true){
+                    checkbox.checked = true;
+                }else{
+                    checkbox.checked = false;
+                }
+                element.prepend(checkbox);
                 const todoList = document.getElementById('todo-list');
                 todoList.appendChild(element)
             });
