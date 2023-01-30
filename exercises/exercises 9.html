@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises 9</title>
+    </head>
+    <body>
+        <script>
+            let nubArr = [1, 5, -2, 4, 3, 5, 0];
+
+            function max(numArr){
+                return Math.max.apply(null, numArr);
+            }
+
+            function min(numArr){
+                return Math.min.apply(null, numArr);
+            }
+
+            function minAboveZero(numArr){
+                numArr = numArr.filter(function (numb){
+                    if(numb >= 0){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                });
+                return Math.min.apply(null, numArr);
+            }
+            console.log(minAboveZero(nubArr));
+
+            let fruits = ['cherry', 'apple', 'orange', 'apple', 'banana', 'apple'  , 'orange'];
+
+            function pickApples(fruitsList){
+                let applesPicked = 0;
+
+                const filteredList = fruitsList.filter(function(fruit){
+                    if(applesPicked >= 2) {
+                        return true;
+                    }else if(fruit === 'apple'){
+                        applesPicked++;
+                        return false;
+                    }else{
+                        return true;
+                    }
+                });
+
+                return filteredList;
+            }
+
+            console.log(pickApples(fruits));
+
+            function pickFruits(fruitsList){
+                let applesPicked = 0;
+                let orangePicked = 0;
+                const filteredList = fruitsList.filter(function(fruit){
+                    if(fruit === 'apple'){
+                        if(applesPicked >= 2){
+                            return true;
+                        }else{
+                            applesPicked++;
+                            return false;
+                        }
+                    }else if(fruit === 'orange'){
+                        if(orangePicked >= 1){
+                            return true;
+                        }else{
+                            orangePicked++;
+                            return false;
+                        }
+                    }else{
+                        return true;
+                    }
+                });
+
+                return filteredList;
+            }
+
+            console.log(pickFruits(fruits));
+
+            function pickLastApples(fruitsList){
+                let applesPicked = 0;
+
+                const reversedList = fruitsList.reverse();
+
+                const filteredList = reversedList.filter(function(fruit){
+                    if(applesPicked >= 2) {
+                        return true;
+                    }else if(fruit === 'apple'){
+                        applesPicked++;
+                        return false;
+                    }else{
+                        return true;
+                    }
+                });
+
+                return filteredList.reverse();
+            }
+
+            console.log(pickLastApples(fruits));
+        </script>
+    </body>
+</html>

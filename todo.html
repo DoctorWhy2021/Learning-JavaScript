@@ -9,7 +9,7 @@
         <button onclick="addTodo();">Add Todo</button>
         <div id="todo-list"></div>
         <script> 
-            const todos = [ {
+            let todos = [ {
                 title: 'Get Groceries',
                 dueDate: '2023-10-04',
                 id: 'id1'
@@ -32,7 +32,7 @@
                 const datePicker = document.getElementById('date-picker');
                 const dueDate = datePicker.value;
 
-                const id = new Date().getTime();
+                const id = '' + new Date().getTime();
                 todos.push({
                     title: title,
                     dueDate: dueDate,
@@ -46,9 +46,15 @@
                 const deleteButton = event.target;
                 const idToDelete = deleteButton.id;
 
-                todos.filter(function (todo){
-                    return 
+                todos = todos.filter(function (todo){
+                    if(todo.id === idToDelete){
+                        return false;
+                    }else{
+                        return true;
+                    }
                 });
+
+                render();
             }
 
             function render(){
